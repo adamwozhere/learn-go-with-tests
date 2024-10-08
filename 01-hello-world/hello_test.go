@@ -13,6 +13,10 @@ import "testing"
 // ok      hello   0.121s
 
 // create a test case first before the actal function (Test Driven Development)
+// Writing a test first and seeing it fail, lets us know that we have written a relevant test
+// for our requirements, and seen that it produces an easy to understand description of the failure.
+// we then write the smallest amount of code to make it pass so we know we have working software.
+// then we can refactor, knowing that everything is tested and that we have good code that is easy to work with
 func TestHello(t *testing.T) {
 	// create subtests with `t.Run` similar to jest etc.
 	t.Run("saying hello to people", func(t *testing.T) {

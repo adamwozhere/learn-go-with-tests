@@ -6,22 +6,32 @@ import "fmt" // the format package handles formatting like printing strings, and
 // the fmt.Println is a side effect (for printing to stdout)
 // and the string we send is our domain
 
-const spanish = "Spanish"
-const french = "French"
-const german = "German"
-const englishHelloPrefix = "Hello, "
-const spanishHelloPrefix = "Hola, "
-const frenchHelloPrefix = "Bonjour, "
-const germanHelloPrefix = "Hallo, "
+const (
+	spanish = "Spanish"
+	french  = "French"
+	german  = "German"
+
+	englishHelloPrefix = "Hello, "
+	spanishHelloPrefix = "Hola, "
+	frenchHelloPrefix  = "Bonjour, "
+	germanHelloPrefix  = "Hallo, "
+)
 
 // function with return type of string
+// the function name begins with a capital letter which means it is a public function
+// to make a function private, use a lowercase starting letter
 func Hello(name, language string) string {
 	if name == "" {
 		name = "World"
-
 	}
-	prefix := englishHelloPrefix
+	return greetingPrefix(language) + name
+}
 
+// function signature has a `named return value` (prefix string)
+// this creates a variable called `prefix` in the function,
+// it will be assigned a "zero" value depending on type,
+// and can be returned simply with `return` rather than `return prefix`
+func greetingPrefix(language string) (prefix string) {
 	switch language {
 	case spanish:
 		prefix = spanishHelloPrefix
@@ -29,9 +39,10 @@ func Hello(name, language string) string {
 		prefix = frenchHelloPrefix
 	case german:
 		prefix = germanHelloPrefix
+	default:
+		prefix = englishHelloPrefix
 	}
-
-	return prefix + name
+	return
 }
 
 func main() {
