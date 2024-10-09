@@ -67,7 +67,8 @@ func TestSumAllTails(t *testing.T) {
 	// It gives type safety too as you cannot create a new test with checkSums
 	// Hiding variables and functions that don't need to be exported is an important design consideration.
 	checkSums := func(t testing.TB, got, want []int) {
-		// here I am not sure why `t testing.TB` does not include the asterisk
+		// here I am not sure why `t testing.TB` does not include the asterisk,
+		// I think because `t` is being passed in which is already in scope as a pointer
 		t.Helper()
 		if !reflect.DeepEqual(got, want) {
 			t.Errorf("got %v want %v", got, want)
